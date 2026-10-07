@@ -1,0 +1,816 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>GRE Quant Lab</title><meta name="description" content="GRE Quantitative Reasoning deneme sınavları: bölüm uyarlamalı denemeler, konu testleri, hesap makinesi ve adım adım çözümler."><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F2F4F6; --panel:#FFFFFF; --ink:#18222D; --mute:#5A6674; --line:#D5DBE2; --soft:#E7ECF1;
+  --acc:#1D5C78; --acc-ink:#FFFFFF; --acc-soft:#DCEAF1; --bar:#23313F; --bar-ink:#F1F4F7;
+  --mark:#B7791F; --ok:#2F7D4F; --ok-soft:#DFF0E5; --bad:#B23A3A; --bad-soft:#F6E1E1;
+  --fig-ink:#18222D; --fig-mute:#5A6674; --fig-grid:#DDE3E9; --fig-soft:#DCEAF1; --fig-acc:#2F7396; --fig-acc2:#D49A3A; --fig-acc-line:#1D5C78; --fig-c3:#8CB7CC; --fig-c4:#6E8A5E; --fig-c5:#A9B2BC;
+  --ui:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#11171D; --panel:#19212A; --ink:#E4E9EE; --mute:#98A4B1; --line:#2E3A46; --soft:#212B35;
+  --acc:#6DB0CE; --acc-ink:#0D1A22; --acc-soft:#1E3440; --bar:#0B1015; --bar-ink:#E4E9EE;
+  --mark:#E3AA4F; --ok:#6CC08C; --ok-soft:#1C3326; --bad:#E27B7B; --bad-soft:#3A2124;
+  --fig-ink:#E4E9EE; --fig-mute:#98A4B1; --fig-grid:#2A3440; --fig-soft:#1E3440; --fig-acc:#5EA3C4; --fig-acc2:#E0AE5C; --fig-acc-line:#7FC0DD; --fig-c3:#3F6E86; --fig-c4:#7FA070; --fig-c5:#65717E;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#11171D; --panel:#19212A; --ink:#E4E9EE; --mute:#98A4B1; --line:#2E3A46; --soft:#212B35;
+  --acc:#6DB0CE; --acc-ink:#0D1A22; --acc-soft:#1E3440; --bar:#0B1015; --bar-ink:#E4E9EE;
+  --mark:#E3AA4F; --ok:#6CC08C; --ok-soft:#1C3326; --bad:#E27B7B; --bad-soft:#3A2124;
+  --fig-ink:#E4E9EE; --fig-mute:#98A4B1; --fig-grid:#2A3440; --fig-soft:#1E3440; --fig-acc:#5EA3C4; --fig-acc2:#E0AE5C; --fig-acc-line:#7FC0DD; --fig-c3:#3F6E86; --fig-c4:#7FA070; --fig-c5:#65717E;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:20px 60px}
+.muted{color:var(--mute)}
+.small{font-size:13px}
+.tnum{font-variant-numeric:tabular-nums}
+h1,h2,h3{text-wrap:balance;margin:0}
+.btn{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:8px 14px;font-weight:600;font-size:14px}
+.btn:hover{border-color:var(--acc)}
+.btn.pri{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.btn.pri:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn.ghost{background:transparent}
+
+/* ---------- top brand */
+.brand{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:20px}
+.brand h1{font-family:var(--serif);font-weight:600;font-size:30px;letter-spacing:-.01em}
+.brand h1 span{font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--acc);display:block;margin-bottom:2px}
+.tabs{display:flex;gap:4px}
+.tabs button{border:0;background:transparent;padding:6px 12px;border-radius:6px;font-weight:600;color:var(--mute)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.note{font-size:13px;color:var(--mute);border-left:3px solid var(--line);padding-left:10px;max-width:70ch}
+
+/* ---------- home */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.card h3{font-family:var(--serif);font-size:20px;font-weight:600}
+.num{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;border-radius:999px;padding:2px 9px;background:var(--soft);color:var(--ink)}
+.chip.acc{background:var(--acc-soft);color:var(--acc)}
+.chip.ok{background:var(--ok-soft);color:var(--ok)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sp{flex:1}
+.section-title{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:700;margin:28px 0 10px}
+
+/* ---------- exam shell */
+.exam{min-height:100%;display:flex;flex-direction:column}
+.bar{background:var(--bar);color:var(--bar-ink);position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.bar .in{max-width:1100px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bar .ttl{font-weight:700;font-size:14px}
+.bar .qn{font-family:var(--mono);font-size:13px;opacity:.85}
+.bar button{background:transparent;border:1px solid rgba(255,255,255,.28);color:var(--bar-ink);border-radius:5px;padding:6px 11px;font-size:13px;font-weight:600}
+.bar button:hover{background:rgba(255,255,255,.1)}
+.bar button.on{background:var(--mark);border-color:var(--mark);color:#1b1305}
+.bar button[disabled]{opacity:.35;cursor:default}
+.timer{font-family:var(--mono);font-size:14px;min-width:62px;text-align:right}
+.timer.low{color:#FF9B8A}
+.stage{flex:1;max-width:860px;width:100%;margin:0 auto;padding-inline:16px;padding-block:24px 80px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1100px}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+.stim{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;overflow-x:auto}
+.stim .intro{font-family:var(--serif);font-style:italic;margin:0 0 10px}
+.qtext{font-family:var(--serif);font-size:18px;line-height:1.6}
+.qtext .hint{font-family:var(--ui);font-size:14px;color:var(--mute)}
+.fig{margin:14px 0;overflow-x:auto;color:var(--fig-ink)}
+.fig svg{display:block;margin:0 auto}
+.nts{font-family:var(--ui);font-size:12px;color:var(--mute);text-align:center;margin:4px 0 0;font-style:italic}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.92em;line-height:1.15;margin:0 2px}
+.frac>span:first-child{border-bottom:1px solid currentColor;padding:0 3px}
+.frac>span:last-child{padding:0 3px}
+.given{text-align:center;margin:6px 0 16px}
+.qcgrid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);margin-bottom:18px}
+.qcgrid>div{padding:12px 14px;text-align:center}
+.qcgrid .h{font-family:var(--ui);font-weight:700;font-size:13px;letter-spacing:.04em;background:var(--soft)}
+.qcgrid>div:nth-child(odd){border-right:1px solid var(--line)}
+.opts{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.opt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:10px 12px;text-align:left;font-family:var(--serif);font-size:17px;width:100%}
+.opt:hover{border-color:var(--acc)}
+.opt .m{flex:none;width:20px;height:20px;border:2px solid var(--mute);border-radius:50%;display:grid;place-items:center}
+.opt.sq .m{border-radius:3px}
+.opt[aria-checked="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.opt[aria-checked="true"] .m{border-color:var(--acc)}
+.opt[aria-checked="true"] .m::after{content:"";width:10px;height:10px;background:var(--acc);border-radius:inherit}
+.opt.sq[aria-checked="true"] .m::after{border-radius:1px}
+.opt .ql{font-family:var(--ui);font-size:13px;color:var(--mute);font-weight:600;width:14px}
+.ne{display:flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--serif);font-size:18px}
+.ne input{font-family:var(--mono);font-size:17px;width:150px;padding:8px 10px;border:2px solid var(--ink);border-radius:3px;background:var(--panel);color:var(--ink)}
+.nef{display:inline-flex;flex-direction:column;align-items:center;gap:6px;margin-top:18px}
+.nef input{width:120px}
+.nef hr{width:130px;border:0;border-top:2px solid var(--ink);margin:0}
+.tbl{overflow-x:auto}
+.tbl .cap{font-size:12px;letter-spacing:.06em;font-weight:700;text-align:center;margin:0 0 8px}
+.tbl table{border-collapse:collapse;margin:0 auto;font-variant-numeric:tabular-nums;font-size:14px}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 14px;text-align:right}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl th{background:var(--soft)}
+.tbl tr.tot td{font-weight:700}
+
+/* ---------- review */
+.rev table{width:100%;border-collapse:collapse;background:var(--panel);font-size:14px}
+.rev th,.rev td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left}
+.rev tbody tr{cursor:pointer}
+.rev tbody tr:hover{background:var(--acc-soft)}
+.rev tr.cur{outline:2px solid var(--acc);outline-offset:-2px}
+.flag{color:var(--mark);font-weight:700}
+.confirm{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;margin-top:14px}
+
+/* ---------- calculator */
+.calc{position:fixed;right:16px;bottom:16px;width:272px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:40;user-select:none;touch-action:none}
+.calc .hd{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:var(--soft);border-radius:8px 8px 0 0;cursor:move;font-size:13px;font-weight:700}
+.calc .hd button{border:0;background:transparent;font-size:18px;line-height:1;padding:0 4px}
+.calc .body{padding:10px;display:flex;flex-direction:column;gap:8px}
+.calc .disp{font-family:var(--mono);font-size:22px;text-align:right;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:6px 10px;min-height:44px;position:relative;overflow:hidden;white-space:nowrap}
+.calc .disp .mem{position:absolute;left:8px;top:4px;font-size:11px;color:var(--mute)}
+.calc .keys{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.calc .keys button{border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:8px 0;font-family:var(--mono);font-size:14px}
+.calc .keys button:hover{border-color:var(--acc)}
+.calc .keys .op{background:var(--soft)}
+.calc .keys .eq{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.calc .tr{width:100%}
+@media (max-width:620px){.calc{left:8px;right:8px;width:auto;top:auto;bottom:calc(8px + env(safe-area-inset-bottom,0px))}.calc .hd{cursor:default}}
+
+/* ---------- formula card */
+.cheat{position:fixed;right:0;top:56px;bottom:0;width:min(380px,92vw);background:var(--panel);border-left:1px solid var(--line);z-index:30;display:flex;flex-direction:column;box-shadow:-8px 0 24px rgba(0,0,0,.12);padding-top:env(safe-area-inset-top,0px)}
+.cheat .hd{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+.cheat .hd button{border:0;background:transparent;font-size:20px;line-height:1}
+.cheat .cbody{overflow-y:auto;padding:4px 16px 24px;font-size:14px;line-height:1.5}
+.cs h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin:16px 0 4px}
+.cs p{margin:0 0 6px}
+.cs-t{border-collapse:collapse;width:100%;font-size:13px;margin:4px 0 6px}
+.cs-t td,.cs-t th{border:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+.cs-t th{background:var(--soft)}
+@media (min-width:1100px){.exam.with-cheat{padding-right:380px}.exam.with-cheat .cheat{box-shadow:none;top:0}}
+@media (max-width:700px){.cheat{top:auto;height:62vh;width:100%;border-left:0;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}}
+
+/* ---------- results */
+.score{display:flex;gap:24px;align-items:flex-end;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px}
+.score .big{font-family:var(--serif);font-size:64px;font-weight:600;line-height:1;color:var(--acc)}
+.score .lab{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+.acc-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.acc-table td,.acc-table th{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+.acc-table td.r,.acc-table th.r{text-align:right}
+.meter{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;min-width:60px}
+.meter i{display:block;height:100%;background:var(--acc)}
+.qrow{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+.qrow summary{list-style:none;display:flex;gap:10px;align-items:center;padding:10px 12px;cursor:pointer;flex-wrap:wrap}
+.qrow summary::-webkit-details-marker{display:none}
+.pill{font-size:12px;font-weight:700;border-radius:4px;padding:2px 8px}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.skip{background:var(--soft);color:var(--mute)}
+.qrow .det{padding:4px 14px 14px;border-top:1px solid var(--line)}
+.sol{background:var(--bg);border-radius:6px;padding:10px 12px;margin-top:10px;font-size:14px;max-width:75ch}
+.sol b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.chart svg{width:100%;height:auto;display:block}
+.empty{padding:20px;text-align:center;color:var(--mute);background:var(--panel);border:1px dashed var(--line);border-radius:8px}
+.err{color:var(--bad);font-size:14px}
+@media (prefers-reduced-motion:no-preference){.opt,.btn{transition:border-color .12s,background .12s}}
+</style>
+
+<div id="app"><div class="wrap"><p class="muted">Yükleniyor…</p></div></div>
+
+<script>
+(() => {
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const TOPIC = {arith:"Aritmetik", alg:"Cebir", geo:"Geometri", data:"Veri Analizi"};
+const TYPE = {qc:"Quantitative Comparison", mc:"Çoktan seçmeli (tek)", ma:"Çoktan seçmeli (çoklu)", ne:"Numeric Entry", nef:"Numeric Entry (kesir)"};
+const VAR = {easy:"Kolay", medium:"Orta", hard:"Zor"};
+const QC_CH = ["Quantity A is greater.","Quantity B is greater.","The two quantities are equal.","The relationship cannot be determined from the information given."];
+const SEC_TIME = {s1:21*60, s2:26*60};
+const LS_RUN = "gql-run-v1", LS_RES = "gql-results-backup-v1";
+const ls = {
+  get(k){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : null; }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} }
+};
+
+const S = { db:null, dbState:"loading", tests:[], results:[], tab:"home", secCache:{}, run:null, view:null, err:"" };
+
+/* ---------------- data (static: data/*.json + localStorage) ---------------- */
+const RES_KEY = "gql-results-v1";
+function makeStaticDb(){
+  const readRes = () => ls.get(RES_KEY) || {};
+  const writeRes = m => { try{ localStorage.setItem(RES_KEY, JSON.stringify(m)); return true; }catch(e){ return false; } };
+  const getJSON = async p => { const r = await fetch(p, {cache:"no-cache"}); if (!r.ok){ const e = new Error("HTTP " + r.status); e.code = r.status; throw e; } return r.json(); };
+  const snap = arr => ({ docs: arr.map(o => ({ id:o.id, data:() => o })) });
+  return {
+    collection(name){ return { async get(){
+      if (name === "tests") return snap(await getJSON("data/tests.json"));
+      if (name === "results") return snap(Object.values(readRes()));
+      return snap([]);
+    } }; },
+    doc(path){
+      const p = path.split("/");
+      return {
+        async get(){
+          if (p[0] === "tests" && p[2] === "sections"){
+            try{ const d = await getJSON("data/" + encodeURIComponent(p[1]) + "/" + encodeURIComponent(p[3]) + ".json"); return { exists:true, data:() => d }; }
+            catch(e){ if (e.code === 404) return { exists:false, data:() => undefined }; throw e; }
+          }
+          if (p[0] === "results"){ const m = readRes(); return { exists:!!m[p[1]], data:() => m[p[1]] }; }
+          return { exists:false, data:() => undefined };
+        },
+        async set(v){ if (p[0] !== "results") throw new Error("read-only"); const m = readRes(); m[p[1]] = v; if (!writeRes(m)){ const e = new Error("storage"); e.code = "storage"; throw e; } },
+        async delete(){ if (p[0] !== "results") return; const m = readRes(); delete m[p[1]]; writeRes(m); }
+      };
+    }
+  };
+}
+
+async function boot(){
+  render();
+  let db = null;
+  try { db = makeStaticDb(); } catch(e){ db = null; }
+  S.db = db; S.dbState = db ? "ok" : "none";
+  await loadAll();
+  const saved = ls.get(LS_RUN);
+  if (saved && saved.testId) S.resumable = saved;
+  render();
+}
+async function loadAll(){
+  const backup = ls.get(LS_RES) || [];
+  if (!S.db){ S.results = backup; return; }
+  try{
+    const ts = await S.db.collection("tests").get();
+    S.tests = ts.docs.map(d => ({ id:d.id, ...d.data() })).sort((a,b) => (b.createdAt||"").localeCompare(a.createdAt||"") || (b.no||b.drillNo||0) - (a.no||a.drillNo||0));
+    const rs = await S.db.collection("results").get();
+    S.results = rs.docs.map(d => ({ id:d.id, ...d.data() }));
+    // push any locally-kept results that never reached the store
+    for (const r of backup){
+      if (!S.results.find(x => x.id === r.id)){
+        try{ await S.db.doc("results/" + r.id).set(r); S.results.push(r); }catch(e){ S.results.push(r); }
+      }
+    }
+    ls.del(LS_RES);
+    S.results.sort((a,b) => (a.finishedAt||"").localeCompare(b.finishedAt||""));
+  }catch(e){ S.err = "Veriler okunamadı (" + (e.code||"hata") + "). Sayfayı yenilemeyi dene."; S.results = backup; }
+}
+async function loadSection(testId, key){
+  const ck = testId + "/" + key;
+  if (S.secCache[ck]) return S.secCache[ck];
+  const snap = await S.db.doc("tests/" + testId + "/sections/" + key).get();
+  if (!snap.exists) throw new Error("Bölüm bulunamadı: " + key);
+  S.secCache[ck] = snap.data();
+  return S.secCache[ck];
+}
+
+/* ---------------- grading ---------------- */
+function parseNum(s){
+  if (s == null) return NaN;
+  s = String(s).trim().replace(/\s/g,"").replace(",", ".");
+  if (!s) return NaN;
+  if (/^-?\d*\.?\d+\/-?\d*\.?\d+$/.test(s)){ const [a,b] = s.split("/").map(Number); return b === 0 ? NaN : a/b; }
+  if (!/^-?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
+  return Number(s);
+}
+const near = (a,b) => Math.abs(a-b) <= 1e-6 * Math.max(1, Math.abs(b));
+function isAnswered(q, v){
+  if (v == null) return false;
+  if (q.type === "ma") return Array.isArray(v) && v.length > 0;
+  if (q.type === "ne") return String(v).trim() !== "";
+  if (q.type === "nef") return v && String(v.n||"").trim() !== "" && String(v.d||"").trim() !== "";
+  return typeof v === "number";
+}
+function grade(q, v){
+  if (!isAnswered(q, v)) return false;
+  const a = q.answer;
+  if (q.type === "qc" || q.type === "mc") return v === a;
+  if (q.type === "ma") return [...v].sort().join(",") === [...a].sort().join(",");
+  if (q.type === "ne") { const x = parseNum(v); return !isNaN(x) && near(x, a.value); }
+  if (q.type === "nef") { const n = parseNum(v.n), d = parseNum(v.d); if (isNaN(n)||isNaN(d)||d===0) return false; return near(n/d, a.value[0]/a.value[1]); }
+  return false;
+}
+function answerText(q, v){
+  if (!isAnswered(q, v)) return "—";
+  if (q.type === "qc") return "ABCD"[v];
+  if (q.type === "mc") return "ABCDE"[v] + " (" + q.choices[v] + ")";
+  if (q.type === "ma") return [...v].sort().map(i => "ABCDEFGH"[i] + " (" + q.choices[i] + ")").join(", ");
+  if (q.type === "ne") return esc(v) + (q.unit_after||"");
+  if (q.type === "nef") return esc(v.n) + "/" + esc(v.d);
+}
+function correctText(q){
+  const a = q.answer;
+  if (q.type === "qc") return "ABCD"[a];
+  if (q.type === "mc") return "ABCDE"[a] + " (" + q.choices[a] + ")";
+  if (q.type === "ma") return a.map(i => "ABCDEFGH"[i] + " (" + q.choices[i] + ")").join(", ");
+  if (q.type === "ne") return a.value + (q.unit_after||"") + " <span class='muted small'>(eşdeğer yazımlar kabul)</span>";
+  if (q.type === "nef") return a.value[0] + "/" + a.value[1] + " <span class='muted small'>(eşdeğer her kesir kabul)</span>";
+}
+function pickVariant(c1){ return c1 >= 8 ? "hard" : c1 >= 5 ? "medium" : "easy"; }
+function estScore(c1, c2, variant){
+  const w = {easy:0.7, medium:1.0, hard:1.35}[variant];
+  const pts = c1 + c2*w, max = 12 + 15*1.35;
+  return Math.round(Math.min(170, Math.max(130, 130 + 40*Math.pow(pts/max, 0.9))));
+}
+const fmtT = s => { s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); };
+
+/* ---------------- run (exam) ---------------- */
+function saveRun(){ if (S.run) ls.set(LS_RUN, { ...S.run, marks:[...S.run.marks] }); }
+async function startTest(testId, resume){
+  S.err = "";
+  try{
+    let run;
+    if (resume){ run = { ...resume, marks:new Set(resume.marks||[]) }; }
+    else { const meta = S.tests.find(t => t.id === testId) || {}; const drill = meta.kind === "drill";
+      run = { testId, drill, phase:drill ? "main" : "s1", variant:null, idx:0, answers:{}, marks:new Set(), times:{}, cheat:[], remaining:drill ? (meta.time||2100) : SEC_TIME.s1, hideTime:false, view:"q", startedAt:new Date().toISOString() }; }
+    const key = run.phase === "s1" ? "s1" : run.phase === "main" ? "main" : run.variant;
+    run.sec = null;
+    S.run = run;
+    const sec = await loadSection(run.testId, key);
+    run.sec = sec;
+    S.view = "exam";
+    run.qStart = Date.now();
+    saveRun(); render(); startTick();
+  }catch(e){ S.err = "Deneme açılamadı: " + (e.message||e.code); S.run = null; render(); }
+}
+let tickH = null;
+function startTick(){
+  stopTick();
+  let last = Date.now();
+  tickH = setInterval(() => {
+    const r = S.run; if (!r || S.view !== "exam") return;
+    const now = Date.now(); const dt = (now - last)/1000; last = now;
+    if (document.hidden) return;
+    r.remaining -= dt;
+    const el = $("#timer"); if (el){ el.textContent = r.hideTime ? "" : fmtT(r.remaining); el.classList.toggle("low", r.remaining < 300); }
+    if (Math.floor(r.remaining) % 5 === 0) { commitTime(); saveRun(); }
+    if (r.remaining <= 0) finishSection(true);
+  }, 1000);
+}
+function stopTick(){ if (tickH) clearInterval(tickH); tickH = null; }
+function commitTime(){
+  const r = S.run; if (!r || !r.sec || r.view !== "q") { if (r) r.qStart = Date.now(); return; }
+  const q = r.sec.questions[r.idx]; const now = Date.now();
+  r.times[q.id] = (r.times[q.id]||0) + (now - (r.qStart||now))/1000; r.qStart = now;
+}
+function go(i){ const r = S.run; commitTime(); r.idx = i; r.view = "q"; r.qStart = Date.now();
+  if (S.cheatOpen && r.sec && r.sec.cheat){ const id = r.sec.questions[i].id; r.cheat = r.cheat || []; if (!r.cheat.includes(id)) r.cheat.push(id); }
+  saveRun(); render(); }
+function setAns(qid, v){ S.run.answers[qid] = v; saveRun(); }
+
+async function finishSection(timeout){
+  const r = S.run; if (!r || r._finishing) return; r._finishing = true;
+  commitTime();
+  if (r.phase === "main"){ stopTick(); await finalize(); r._finishing = false; return; }
+  if (r.phase === "s1"){
+    const qs = r.sec.questions;
+    const c1 = qs.filter(q => grade(q, r.answers[q.id])).length;
+    r.variant = pickVariant(c1); r.c1 = c1; r.s1Ids = qs.map(q => q.id);
+    r.phase = "break"; r.view = "break"; r.timeout = !!timeout; r._finishing = false;
+    stopTick(); saveRun(); render();
+    return;
+  }
+  stopTick();
+  await finalize();
+  r._finishing = false;
+}
+async function beginS2(){
+  const r = S.run;
+  try{
+    const sec = await loadSection(r.testId, r.variant);
+    r.sec = sec; r.phase = "s2"; r.idx = 0; r.view = "q"; r.remaining = SEC_TIME.s2; r.qStart = Date.now();
+    saveRun(); render(); startTick();
+  }catch(e){ S.err = "Bölüm 2 yüklenemedi: " + (e.message||e.code); render(); }
+}
+function noAnswers(r){ return !Object.values(r.answers||{}).some(v => v != null && v !== "" && !(Array.isArray(v) && !v.length) && !(typeof v === "object" && !Array.isArray(v) && !String(v.n||"").trim() && !String(v.d||"").trim())); }
+function discardRun(msg){ stopTick(); ls.del(LS_RUN); S.run = null; S.resumable = null; S.quitAsk = false; S.cheatOpen = false; S.view = null; S.tab = "home"; S.err = msg || ""; render(); window.scrollTo(0,0); }
+async function finalize(){
+  const r = S.run;
+  if (noAnswers(r)) return discardRun("Hiç soru cevaplanmadığı için bu deneme kaydedilmedi.");
+  if (r.phase === "main") return finalizeDrill();
+  const s1 = await loadSection(r.testId, "s1"), s2 = await loadSection(r.testId, r.variant);
+  const items = [];
+  const push = (sec, q, i) => items.push({ qid:q.id, section:sec, n:i+1, topic:q.topic, sub:q.sub, type:q.type,
+    answered:isAnswered(q, r.answers[q.id]), correct:grade(q, r.answers[q.id]), answer:r.answers[q.id] ?? null, time:Math.round(r.times[q.id]||0) });
+  s1.questions.forEach((q,i) => push("s1", q, i));
+  s2.questions.forEach((q,i) => push(r.variant, q, i));
+  const c1 = items.filter(x => x.section === "s1" && x.correct).length;
+  const c2 = items.filter(x => x.section !== "s1" && x.correct).length;
+  const test = S.tests.find(t => t.id === r.testId) || {};
+  const res = { id:"r" + Date.now(), testId:r.testId, testNo:test.no||null, startedAt:r.startedAt, finishedAt:new Date().toISOString(),
+    variant:r.variant, s1Correct:c1, s2Correct:c2, score:estScore(c1, c2, r.variant), items };
+  let saved = false;
+  if (S.db){ try{ await S.db.doc("results/" + res.id).set(res); saved = true; }catch(e){ saved = false; } }
+  if (!saved){ const b = ls.get(LS_RES) || []; b.push(res); ls.set(LS_RES, b); res._local = true; }
+  S.results.push(res);
+  ls.del(LS_RUN); S.run = null; S.resumable = null;
+  S.view = "result"; S.resultId = res.id; S.saveWarn = !saved;
+  render(); window.scrollTo(0,0);
+}
+
+async function finalizeDrill(){
+  if (noAnswers(S.run)) return discardRun("Hiç soru cevaplanmadığı için bu deneme kaydedilmedi.");
+  const r = S.run, sec = await loadSection(r.testId, "main"), cheat = new Set(r.cheat||[]);
+  const items = sec.questions.map((q,i) => ({ qid:q.id, section:"main", n:i+1, topic:q.topic, sub:q.sub, type:q.type,
+    answered:isAnswered(q, r.answers[q.id]), correct:grade(q, r.answers[q.id]), answer:r.answers[q.id] ?? null, time:Math.round(r.times[q.id]||0), cheat:cheat.has(q.id) }));
+  const test = S.tests.find(t => t.id === r.testId) || {};
+  const res = { id:"r" + Date.now(), kind:"drill", testId:r.testId, drillNo:test.drillNo||null, title:test.title||"", startedAt:r.startedAt, finishedAt:new Date().toISOString(),
+    correct:items.filter(x => x.correct).length, total:items.length, cheatCount:cheat.size, score:null, items };
+  let saved = false;
+  if (S.db){ try{ await S.db.doc("results/" + res.id).set(res); saved = true; }catch(e){ saved = false; } }
+  if (!saved){ const b = ls.get(LS_RES) || []; b.push(res); ls.set(LS_RES, b); res._local = true; }
+  S.results.push(res);
+  ls.del(LS_RUN); S.run = null; S.resumable = null; S.cheatOpen = false;
+  S.view = "result"; S.resultId = res.id; S.saveWarn = !saved;
+  render(); window.scrollTo(0,0);
+}
+
+/* ---------------- calculator ---------------- */
+const C = { open:false, toks:[], cur:"", mem:0, done:false, err:false, x:null, y:null };
+const cval = () => C.cur !== "" ? Number(C.cur) : 0;
+function cfmt(x){
+  if (!isFinite(x)) return "Error";
+  let s = Number(x.toPrecision(10)).toString();
+  if (s.includes("e")) s = x.toPrecision(8);
+  return s;
+}
+function cEval(toks){
+  const out = [], ops = [], prec = {"+":1,"−":1,"×":2,"÷":2};
+  for (const t of toks){
+    if (typeof t === "number") out.push(t);
+    else if (t === "(") ops.push(t);
+    else if (t === ")"){ while (ops.length && ops[ops.length-1] !== "(") out.push(ops.pop()); ops.pop(); }
+    else { while (ops.length && ops[ops.length-1] !== "(" && prec[ops[ops.length-1]] >= prec[t]) out.push(ops.pop()); ops.push(t); }
+  }
+  while (ops.length){ const o = ops.pop(); if (o !== "(") out.push(o); }
+  const st = [];
+  for (const t of out){
+    if (typeof t === "number") st.push(t);
+    else { const b = st.pop(), a = st.pop(); if (a === undefined || b === undefined) return NaN;
+      st.push(t === "+" ? a+b : t === "−" ? a-b : t === "×" ? a*b : b === 0 ? NaN : a/b); }
+  }
+  return st.length === 1 ? st[0] : NaN;
+}
+function cDisp(){ return C.err ? "Error" : (C.cur !== "" ? C.cur : "0"); }
+function cKey(k){
+  if (C.err && k !== "C") return;
+  const last = C.toks[C.toks.length-1];
+  const isOp = t => ["+","−","×","÷"].includes(t);
+  if (/^[0-9]$/.test(k)){
+    if (C.done){ C.toks = []; C.cur = ""; C.done = false; }
+    if (C.cur.replace(/[-.]/g,"").length >= 10) return;
+    C.cur = (C.cur === "0" ? "" : C.cur === "-0" ? "-" : C.cur) + k;
+  } else if (k === "."){
+    if (C.done){ C.toks = []; C.cur = ""; C.done = false; }
+    if (!C.cur.includes(".")) C.cur = (C.cur === "" || C.cur === "-" ? C.cur + "0" : C.cur) + ".";
+  } else if (isOp(k)){
+    C.done = false;
+    if (C.cur !== ""){ C.toks.push(Number(C.cur)); C.cur = ""; }
+    else if (isOp(last)) { C.toks[C.toks.length-1] = k; return cRender(); }
+    else if (!C.toks.length || last === "(") C.toks.push(0);
+    C.toks.push(k);
+  } else if (k === "("){
+    if (C.done){ C.toks = []; C.cur = ""; C.done = false; }
+    if (C.cur === "") C.toks.push("(");
+  } else if (k === ")"){
+    const open = C.toks.filter(t => t === "(").length - C.toks.filter(t => t === ")").length;
+    if (open > 0 && (C.cur !== "" || last === ")")){ if (C.cur !== ""){ C.toks.push(Number(C.cur)); C.cur = ""; } C.toks.push(")"); }
+  } else if (k === "="){
+    if (C.cur !== "") C.toks.push(Number(C.cur));
+    else if (isOp(last)) C.toks.pop();
+    let open = C.toks.filter(t => t === "(").length - C.toks.filter(t => t === ")").length;
+    while (open-- > 0) C.toks.push(")");
+    if (!C.toks.length) return cRender();
+    const v = cEval(C.toks); C.toks = [];
+    if (isNaN(v) || !isFinite(v)){ C.err = true; C.cur = ""; } else { C.cur = cfmt(v); C.done = true; }
+  } else if (k === "√"){
+    const v = cval(); if (v < 0){ C.err = true; } else { C.cur = cfmt(Math.sqrt(v)); C.done = true; }
+  } else if (k === "±"){
+    if (C.cur === "" ) C.cur = "-"; else if (C.cur === "-") C.cur = ""; else C.cur = C.cur.startsWith("-") ? C.cur.slice(1) : "-" + C.cur;
+  } else if (k === "C"){ C.toks = []; C.cur = ""; C.err = false; C.done = false; }
+  else if (k === "CE"){ C.cur = ""; C.err = false; }
+  else if (k === "MC"){ C.mem = 0; }
+  else if (k === "MR"){ C.cur = cfmt(C.mem); C.done = false; }
+  else if (k === "M+"){ C.mem += cval(); C.done = true; }
+  cRender();
+}
+function cRender(){
+  const d = $("#cdisp"); if (d) d.textContent = cDisp();
+  const m = $("#cmem"); if (m) m.textContent = C.mem !== 0 ? "M" : "";
+  const tr = $("#ctr"); if (tr) tr.disabled = !canTransfer();
+}
+function canTransfer(){ const r = S.run; if (!r || !r.sec || r.view !== "q") return false; const q = r.sec.questions[r.idx]; return q && q.type === "ne"; }
+function transfer(){
+  if (!canTransfer() || C.err) return;
+  const q = S.run.sec.questions[S.run.idx]; const v = cDisp();
+  setAns(q.id, v); const inp = $("#ne-in"); if (inp) inp.value = v;
+}
+function calcHTML(){
+  const keys = [["MR","MC","M+","(",")"],["7","8","9","÷","C"],["4","5","6","×","CE"],["1","2","3","−","√"],["0",".","±","+","="]];
+  const cls = k => ["÷","×","−","+","√","(",")","MR","MC","M+","C","CE","±"].includes(k) ? "op" : k === "=" ? "eq" : "";
+  const pos = C.x != null ? `style="left:${C.x}px;top:${C.y}px;right:auto;bottom:auto"` : "";
+  return `<div class="calc" id="calc" ${pos} role="dialog" aria-label="Hesap makinesi">
+    <div class="hd" id="chd"><span>Calculator</span><button data-a="calc-close" aria-label="Kapat">×</button></div>
+    <div class="body"><button class="btn tr" id="ctr" data-a="transfer">Transfer Display</button>
+    <div class="disp"><span class="mem" id="cmem"></span><span id="cdisp">0</span></div>
+    <div class="keys">${keys.flat().map(k => `<button class="${cls(k)}" data-ck="${k}">${k}</button>`).join("")}</div></div></div>`;
+}
+function bindCalcDrag(){
+  const hd = $("#chd"), box = $("#calc"); if (!hd || !box || window.matchMedia("(max-width:620px)").matches) return;
+  let sx, sy, ox, oy, on = false;
+  hd.addEventListener("pointerdown", e => { if (e.target.closest("button")) return; on = true; const r = box.getBoundingClientRect(); sx = e.clientX; sy = e.clientY; ox = r.left; oy = r.top; hd.setPointerCapture(e.pointerId); });
+  hd.addEventListener("pointermove", e => { if (!on) return; C.x = Math.max(0, Math.min(window.innerWidth - 280, ox + e.clientX - sx)); C.y = Math.max(0, Math.min(window.innerHeight - 60, oy + e.clientY - sy)); box.style.left = C.x + "px"; box.style.top = C.y + "px"; box.style.right = "auto"; box.style.bottom = "auto"; });
+  hd.addEventListener("pointerup", () => on = false);
+}
+
+/* ---------------- views ---------------- */
+function render(){
+  const app = $("#app");
+  if (S.view === "exam" && S.run) app.innerHTML = examHTML();
+  else if (S.view === "result") app.innerHTML = resultHTML(S.results.find(r => r.id === S.resultId));
+  else app.innerHTML = homeHTML();
+  if (S.view === "exam" && C.open){ cRender(); bindCalcDrag(); }
+  if (S.view === "result" && S._needSecs) loadResultSecs();
+}
+
+function homeHTML(){
+  const head = `<div class="brand"><h1><span>GRE QUANTITATIVE REASONING</span>GRE Quant Lab</h1>
+    <div class="tabs" role="tablist"><button role="tab" aria-selected="${S.tab==="home"}" data-a="tab" data-v="home">Denemeler</button><button role="tab" aria-selected="${S.tab==="hist"}" data-a="tab" data-v="hist">Geçmiş</button><button data-a="fs" title="Tam ekran">${document.fullscreenElement ? "Tam ekrandan çık" : "Tam ekran"}</button></div></div>`;
+  if (S.dbState === "loading") return `<div class="wrap">${head}<p class="muted">Veriler yükleniyor…</p></div>`;
+  if (S.dbState === "none") return `<div class="wrap">${head}<div class="empty">Denemeler yüklenemedi. Sayfayı yenilemeyi dene.</div></div>`;
+  return `<div class="wrap">${head}${S.fsFail ? `<p class="note">Bu görünüm tam ekranı desteklemiyor. Tarayıcıda F11 (Mac: Ctrl+Cmd+F) ile tam ekrana geçebilirsin.</p>` : ""}${S.err ? `<p class="err">${esc(S.err)}</p>` : ""}${S.tab === "hist" ? histHTML() : testsHTML()}<footer class="small muted" style="margin-top:40px;padding-top:12px;border-top:1px solid var(--line)"><p style="margin:0 0 4px">Sonuçların yalnızca bu tarayıcıda saklanır; başka cihazda veya gizli pencerede görünmez.</p><p style="margin:0">Not affiliated with or endorsed by ETS. GRE® is a registered trademark of ETS. Sorular ve çözümler bu site için özgün olarak hazırlanmıştır; tahmini puan resmi bir ETS puanı değildir.</p></footer></div>`;
+}
+function testsHTML(){
+  let h = "";
+  if (S.resumable){
+    const t = S.tests.find(x => x.id === S.resumable.testId);
+    h += `<div class="card" style="margin-bottom:14px;border-color:var(--acc)"><div class="row"><div><div class="num">YARIM KALAN DENEME</div><strong>${esc(t ? t.title : S.resumable.testId)}</strong> <span class="muted small">· ${S.resumable.phase === "s1" ? "Bölüm 1" : S.resumable.phase === "break" ? "Bölüm arası" : "Bölüm 2 (" + VAR[S.resumable.variant] + ")"} · kalan ${fmtT(S.resumable.remaining)}</span></div><span class="sp"></span>
+      <button class="btn" data-a="discard">Sil</button><button class="btn pri" data-a="resume">Devam et</button></div></div>`;
+  }
+  h += `<div class="section-title">Denemeler</div>`;
+  if (!S.tests.length) return h + `<div class="empty">Henüz deneme yok.</div>`;
+  h += `<div class="grid">` + S.tests.map(t => {
+    const rs = S.results.filter(r => r.testId === t.id);
+    if (t.kind === "drill"){
+      const bestD = rs.length ? Math.max(...rs.map(r => r.correct)) : null;
+      return `<div class="card"><div class="num">KONU TESTİ ${String(t.drillNo||1).padStart(2,"0")} · ${esc(t.createdAt||"")}</div><h3>${esc(t.title)}</h3>
+      <div class="chips">${(t.targets||[]).map(x => `<span class="chip acc">${esc(x)}</span>`).join("")}${bestD != null ? `<span class="chip ok">En iyi ${bestD}/${t.counts?.main||20}</span>` : ""}</div>
+      <p class="small muted" style="margin:0">${esc(t.note||"")}</p>
+      <div class="row"><span class="sp"></span>${rs.length ? `<button class="btn" data-a="show-res" data-v="${rs[rs.length-1].id}">Son sonuç</button>` : ""}<button class="btn pri" data-a="start" data-v="${t.id}">${rs.length ? "Tekrar çöz" : "Başla"}</button></div></div>`;
+    }
+    const best = rs.length ? Math.max(...rs.map(r => r.score)) : null;
+    const tg = (t.targets||[]).length ? t.targets.map(x => `<span class="chip acc">${esc(x)}</span>`).join("") : `<span class="chip">Dengeli dağılım</span>`;
+    return `<div class="card"><div class="num">DENEME ${String(t.no).padStart(2,"0")} · ${esc(t.createdAt||"")}</div><h3>${esc(t.title)}</h3>
+      <div class="chips">${tg}${best != null ? `<span class="chip ok">Tahmini ${best}</span>` : ""}</div>
+      <p class="small muted" style="margin:0">${esc(t.note||"")}</p>
+      <p class="small muted" style="margin:0">Bölüm 1: 12 soru, 21 dk · Bölüm 2: 15 soru, 26 dk</p>
+      <div class="row"><span class="sp"></span>${rs.length ? `<button class="btn" data-a="show-res" data-v="${rs[rs.length-1].id}">Son sonuç</button>` : ""}<button class="btn pri" data-a="start" data-v="${t.id}">${rs.length ? "Tekrar çöz" : "Başla"}</button></div></div>`;
+  }).join("") + `</div>`;
+  h += `<div class="section-title">Nasıl işliyor</div><p class="note">Bölüm 1 orta zorluktadır. Bölüm 2'nin zorluğu Bölüm 1'deki doğru sayına göre seçilir: 8 ve üzeri → zor, 5–7 → orta, 4 ve altı → kolay. ETS gerçek eşikleri yayımlamıyor; bu eşikler tahmini.</p>`;
+  return h;
+}
+function aggregate(key){
+  const m = {};
+  for (const r of S.results) for (const it of r.items||[]){
+    const k = key(it); if (!k) continue; m[k] = m[k] || {k, n:0, c:0, t:0}; m[k].n++; if (it.correct) m[k].c++; m[k].t += it.time||0;
+  }
+  return Object.values(m);
+}
+function histHTML(){
+  const rs = S.results;
+  if (!rs.length) return `<div class="section-title">Geçmiş</div><div class="empty">Henüz tamamlanmış deneme yok. İlk denemeyi bitirdiğinde puan grafiği ve zayıf konuların burada görünür.</div>`;
+  const subs = aggregate(it => TOPIC[it.topic] + " · " + it.sub).filter(x => x.n >= 2);
+  const pool = subs.length >= 3 ? subs : aggregate(it => TOPIC[it.topic] + " · " + it.sub);
+  const weak = pool.sort((a,b) => a.c/a.n - b.c/b.n || b.n - a.n).slice(0,3);
+  const topics = aggregate(it => it.topic);
+  const full = rs.filter(r => r.kind !== "drill");
+  let h = full.length ? `<div class="section-title">Tahmini puan (130–170)</div><div class="card chart">${scoreChart(full)}</div>` : "";
+  h += `<div class="two" style="margin-top:14px"><div class="card"><div class="num">EN ZAYIF 3 KONU</div>` +
+    weak.map(w => `<div><div class="row"><strong style="font-size:14px">${esc(w.k)}</strong><span class="sp"></span><span class="tnum small">${w.c}/${w.n}</span></div><div class="meter"><i style="width:${Math.round(w.c/w.n*100)}%"></i></div></div>`).join("") +
+    `</div><div class="card"><div class="num">ANA KONULAR</div><table class="acc-table"><tbody>` +
+    topics.map(t => `<tr><td>${TOPIC[t.k]}</td><td class="r tnum">${t.c}/${t.n}</td><td class="r tnum">%${Math.round(t.c/t.n*100)}</td></tr>`).join("") + `</tbody></table></div></div>`;
+  h += `<div class="section-title">Tüm denemeler</div><div class="rev"><table><thead><tr><th>Tarih</th><th>Deneme</th><th>Bölüm 2</th><th class="tnum">Doğru</th><th>Tahmini</th></tr></thead><tbody>` +
+    rs.slice().reverse().map(r => r.kind === "drill" ? `<tr data-a="show-res" data-v="${r.id}"><td class="tnum">${esc((r.finishedAt||"").slice(0,10))}</td><td>Konu testi ${r.drillNo||""}</td><td>—</td><td class="tnum">${r.correct}/${r.total}</td><td class="muted">—</td></tr>` : `<tr data-a="show-res" data-v="${r.id}"><td class="tnum">${esc((r.finishedAt||"").slice(0,10))}</td><td>${r.testNo ? "Deneme " + r.testNo : esc(r.testId)}</td><td>${VAR[r.variant]}</td><td class="tnum">${r.s1Correct + r.s2Correct}/27</td><td class="tnum"><strong>${r.score}</strong></td></tr>`).join("") + `</tbody></table></div>`;
+  return h;
+}
+function scoreChart(rs){
+  const W = 640, H = 220, L = 40, R = 16, T = 14, B = 30, pw = W-L-R, ph = H-T-B;
+  const n = rs.length, x = i => L + (n === 1 ? pw/2 : i*pw/(n-1)), y = v => T + ph - (v-130)/40*ph;
+  let g = "";
+  for (let v = 130; v <= 170; v += 10) g += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" style="stroke:var(--fig-grid);stroke-width:1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" style="fill:var(--mute);font-size:11px">${v}</text>`;
+  const pts = rs.map((r,i) => `${x(i)},${y(r.score)}`).join(" ");
+  if (n > 1) g += `<polygon points="${x(0)},${y(130)} ${pts} ${x(n-1)},${y(130)}" style="fill:var(--acc-soft);stroke:none"/><polyline points="${pts}" style="fill:none;stroke:var(--acc);stroke-width:2"/>`;
+  rs.forEach((r,i) => { g += `<circle cx="${x(i)}" cy="${y(r.score)}" r="${i===n-1?5:3.5}" style="fill:var(--acc);stroke:var(--panel);stroke-width:2"/><text x="${x(i)}" y="${H-10}" text-anchor="middle" style="fill:var(--mute);font-size:11px">#${i+1}</text>`; });
+  const lr = rs[n-1]; g += `<text x="${Math.min(x(n-1)+8, W-R-30)}" y="${y(lr.score)-8}" style="fill:var(--ink);font-size:12px;font-weight:700">${lr.score}</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Deneme puanları">${g}</svg>`;
+}
+
+function qHTML(q, sec, r){
+  const v = r.answers[q.id];
+  let body = "";
+  if (q.fig) body += `<div class="fig">${q.fig}</div>`;
+  if (q.type === "qc"){
+    body += (q.given ? `<div class="qtext given">${q.given}</div>` : "") +
+      `<div class="qcgrid qtext"><div class="h">Quantity A</div><div class="h">Quantity B</div><div>${q.qa}</div><div>${q.qb}</div></div>` +
+      `<div class="opts">${QC_CH.map((c,i) => `<button class="opt" role="radio" aria-checked="${v===i}" data-a="pick" data-v="${i}"><span class="m"></span><span class="ql">${"ABCD"[i]}</span><span style="font-family:var(--ui);font-size:15px">${c}</span></button>`).join("")}</div>`;
+  } else {
+    body = `<div class="qtext">${q.stem}</div>` + body;
+    if (q.type === "mc") body += `<div class="opts" role="radiogroup">${q.choices.map((c,i) => `<button class="opt" role="radio" aria-checked="${v===i}" data-a="pick" data-v="${i}"><span class="m"></span><span>${c}</span></button>`).join("")}</div>`;
+    if (q.type === "ma") body += `<div class="opts">${q.choices.map((c,i) => `<button class="opt sq" role="checkbox" aria-checked="${Array.isArray(v)&&v.includes(i)}" data-a="multi" data-v="${i}"><span class="m"></span><span>${c}</span></button>`).join("")}</div>`;
+    if (q.type === "ne") body += `<div class="ne"><input id="ne-in" inputmode="decimal" autocomplete="off" aria-label="Cevap" value="${esc(v||"")}">${q.unit_after ? `<span>${q.unit_after}</span>` : ""}</div>`;
+    if (q.type === "nef") body += `<div class="ne"><div class="nef"><input id="nef-n" inputmode="numeric" autocomplete="off" aria-label="Pay" value="${esc(v&&v.n||"")}"><hr><input id="nef-d" inputmode="numeric" autocomplete="off" aria-label="Payda" value="${esc(v&&v.d||"")}"></div></div>`;
+  }
+  if (q.set && sec.sets && sec.sets[q.set]){
+    const st = sec.sets[q.set];
+    return `<div class="split"><div class="stim"><p class="intro">${st.intro}</p>${st.html}</div><div>${body}</div></div>`;
+  }
+  return body;
+}
+function examHTML(){
+  const r = S.run, sec = r.sec;
+  const secLabel = r.phase === "main" ? "Section 1 of 1" : r.phase === "s1" ? "Section 1 of 2" : r.phase === "s2" ? "Section 2 of 2" : "Bölüm arası";
+  if (r.view === "break"){
+    return `<div class="exam"><div class="bar"><div class="in"><span class="ttl">GRE Quant Lab</span><span class="sp"></span></div></div>
+      <div class="stage"><div class="card"><div class="num">BÖLÜM 1 TAMAMLANDI${r.timeout ? " · SÜRE DOLDU" : ""}</div>
+      <div style="display:flex;align-items:baseline;gap:10px;margin:6px 0 10px"><span style="font-size:34px;font-weight:700;color:var(--acc)">${r.c1} / ${(r.s1Ids||[]).length || 12}</span><span class="muted">Bölüm 1 doğru sayın</span></div>
+      ${s1WrongHTML(r)}
+      <h3>Bölüm 2: ${VAR[r.variant]} zorluk</h3>
+      <p style="margin:0">Bölüm 2: 15 soru, 26 dakika. Hazır olduğunda başlat; süre başlayınca durmaz.</p>
+      <p class="note">Zorluk, Bölüm 1 performansına göre seçildi (8+ doğru → zor, 5–7 → orta, ≤4 → kolay). Bu eşikler tahmini; ETS gerçek eşikleri yayımlamıyor.</p>
+      <div class="row"><button class="btn" data-a="quit">Vazgeç</button><span class="sp"></span><button class="btn pri" data-a="begin-s2">Bölüm 2'yi başlat</button></div>${S.quitAsk ? quitHTML() : ""}${S.err ? `<p class="err">${esc(S.err)}</p>` : ""}</div></div></div>`;
+  }
+  const qs = sec.questions, q = qs[r.idx], N = qs.length;
+  const bar = `<div class="bar"><div class="in">
+    <span class="ttl">${secLabel}</span><span class="qn">${r.view === "review" ? "Review" : `Question ${r.idx+1} of ${N}`}</span>
+    <span class="sp"></span>
+    <button data-a="mark" class="${r.marks.has(q.id) ? "on" : ""}" ${r.view === "review" ? "disabled" : ""}>Mark</button>
+    <button data-a="review">${r.view === "review" ? "Return" : "Review"}</button>
+    <button data-a="calc">Calculator</button>
+    ${sec.cheat ? `<button data-a="cheat" class="${S.cheatOpen ? "on" : ""}">Formüller</button>` : ""}
+    <button data-a="fs" title="Tam ekran">${document.fullscreenElement ? "⤡" : "⤢"}</button>
+    <button data-a="prev" ${r.idx === 0 || r.view === "review" ? "disabled" : ""}>Back</button>
+    <button data-a="next">${r.view === "review" ? "Exit Section" : "Next"}</button>
+    <button data-a="quit" title="Denemeden çık (kaydedilmez)">Vazgeç</button>
+    <button data-a="hide-time" title="Süreyi gizle/göster" style="border:0;padding:6px 4px"><span id="timer" class="timer ${r.remaining < 300 ? "low" : ""}">${r.hideTime ? "" : fmtT(r.remaining)}</span>${r.hideTime ? "Show Time" : ""}</button>
+  </div></div>`;
+  let main;
+  if (r.view === "review"){
+    main = `<div class="stage rev"><h2 style="font-family:var(--serif);font-size:22px;margin-bottom:6px">Review</h2>
+      <p class="muted small" style="margin-top:0">Bir soruya gitmek için satıra tıkla. Bölümü bitirmek için "Exit Section".</p>
+      <table><thead><tr><th>Question</th><th>Status</th><th>Marked</th></tr></thead><tbody>` +
+      qs.map((x,i) => { const a = isAnswered(x, r.answers[x.id]); return `<tr data-a="goto" data-v="${i}" class="${i===r.idx?"cur":""}"><td class="tnum">${i+1}</td><td>${a ? "Answered" : `<span class="muted">Not Answered</span>`}</td><td>${r.marks.has(x.id) ? `<span class="flag">✓ Marked</span>` : ""}</td></tr>`; }).join("") +
+      `</tbody></table>` + (r.confirmExit ? `<div class="confirm"><strong>Bölümü bitirmek istiyor musun?</strong><p class="small muted" style="margin:4px 0 10px">Cevaplanmamış soru: ${qs.filter(x => !isAnswered(x, r.answers[x.id])).length}. Bitirdikten sonra bu bölüme dönemezsin.</p><div class="row"><button class="btn" data-a="exit-no">Vazgeç</button><button class="btn pri" data-a="exit-yes">Bölümü bitir</button></div></div>` : "") + `</div>`;
+  } else {
+    main = `<div class="stage" style="${q.set ? "max-width:1100px" : ""}">${qHTML(q, sec, r)}</div>`;
+  }
+  const cs = sec.cheat && S.cheatOpen ? `<aside class="cheat" aria-label="Formül kartı"><div class="hd"><strong>Formül kartı</strong><button data-a="cheat" aria-label="Kapat">×</button></div><div class="cbody">${sec.cheat}</div></aside>` : "";
+  return `<div class="exam${cs ? " with-cheat" : ""}">${bar}${S.quitAsk ? `<div class="stage" style="padding-bottom:0">${quitHTML()}</div>` : ""}${main}${cs}${C.open ? calcHTML() : ""}</div>`;
+}
+
+function s1WrongHTML(r){
+  const qs = (r.sec && r.sec.questions || []).filter(q => (r.s1Ids||[]).includes(q.id));
+  const wrong = qs.map((q,i) => ({q, n:i+1})).filter(x => !grade(x.q, r.answers[x.q.id]));
+  if (!wrong.length) return `<p class="small muted" style="margin:0 0 6px">Bölüm 1'de yanlışın yok.</p>`;
+  let h = `<div class="row" style="margin-bottom:6px"><button class="btn" data-a="s1wrong">${S.showS1Wrong ? "Yanlışları gizle" : `Yanlışlarımı göster (${wrong.length})`}</button><span class="small muted">Bölüm 2'nin süresi sen başlatana kadar işlemez.</span></div>`;
+  if (!S.showS1Wrong) return h;
+  const sec = r.sec;
+  wrong.forEach(({q, n}) => {
+    const v = r.answers[q.id];
+    const pill = isAnswered(q, v) ? `<span class="pill bad">Yanlış</span>` : `<span class="pill skip">Boş</span>`;
+    const stim = q.set && sec.sets && sec.sets[q.set] ? `<div class="stim" style="margin-bottom:12px">${sec.sets[q.set].html}</div>` : "";
+    const qb = q.type === "qc" ? `${q.fig ? `<div class="fig">${q.fig}</div>` : ""}${q.given ? `<div class="qtext given">${q.given}</div>` : ""}<div class="qcgrid qtext"><div class="h">Quantity A</div><div class="h">Quantity B</div><div>${q.qa}</div><div>${q.qb}</div></div>`
+      : `<div class="qtext">${q.stem}</div>${q.fig ? `<div class="fig">${q.fig}</div>` : ""}${q.choices ? `<ol type="A" style="font-family:var(--serif)">${q.choices.map(c => `<li>${c}</li>`).join("")}</ol>` : ""}`;
+    h += `<details class="qrow"><summary><span class="tnum" style="font-weight:700;width:26px">${n}</span>${pill}<span class="small">${TOPIC[q.topic]} · ${esc(q.sub)}</span><span class="sp"></span><span class="tnum small muted">${fmtT(r.times[q.id]||0)}</span></summary>
+      <div class="det">${stim}${qb}<p class="small"><strong>Senin cevabın:</strong> ${answerText(q, v)} &nbsp;·&nbsp; <strong>Doğru cevap:</strong> ${correctText(q)}</p>
+      <div class="sol"><b>Adım adım çözüm</b>${q.expl}</div>${q.short ? `<div class="sol"><b>Kısayol</b>${q.short}</div>` : ""}</div></details>`;
+  });
+  return h;
+}
+function quitHTML(){
+  return `<div class="confirm" style="border-color:var(--bad)"><strong>Denemeden çıkmak istiyor musun?</strong><p class="small muted" style="margin:4px 0 10px">Cevapların ve süren silinir, sonuç kaydedilmez. Denemeyi daha sonra baştan çözebilirsin.</p><div class="row"><button class="btn" data-a="quit-no">Devam et</button><button class="btn pri" data-a="quit-yes" style="background:var(--bad);border-color:var(--bad)">Çık, kaydetme</button></div></div>`;
+}
+let _resSecs = {};
+async function loadResultSecs(){
+  S._needSecs = false;
+  const res = S.results.find(r => r.id === S.resultId); if (!res || !S.db) return;
+  try{ _resSecs = res.kind === "drill" ? { forId:res.id, s1: await loadSection(res.testId, "main"), s2: { questions: [] } } : { forId:res.id, s1: await loadSection(res.testId, "s1"), s2: await loadSection(res.testId, res.variant) }; }catch(e){ _resSecs = { forId:res.id, failed:true }; }
+  render();
+}
+function resultHTML(res){
+  if (!res) { S.view = null; return homeHTML(); }
+  const secs = _resSecs.s1 && _resSecs.forId === res.id ? _resSecs : null;
+  if (!secs && S.db && _resSecs.forId !== res.id){ S._needSecs = true; _resSecs = { forId:res.id }; }
+  const qById = {}; if (secs){ secs.s1.questions.forEach(q => qById[q.id] = q); secs.s2.questions.forEach(q => qById[q.id] = q); }
+  const items = res.items||[];
+  const agg = key => { const m = {}; items.forEach(it => { const k = key(it); m[k] = m[k] || {k,n:0,c:0,t:0}; m[k].n++; if (it.correct) m[k].c++; m[k].t += it.time||0; }); return Object.values(m); };
+  const tbl = (rows, lab) => `<table class="acc-table"><thead><tr><th>${lab}</th><th class="r">Doğru</th><th></th><th class="r">Ort. süre</th></tr></thead><tbody>` +
+    rows.map(x => `<tr><td>${x.label}</td><td class="r tnum">${x.c}/${x.n}</td><td style="width:30%"><div class="meter"><i style="width:${Math.round(x.c/x.n*100)}%"></i></div></td><td class="r tnum">${fmtT(x.t/x.n)}</td></tr>`).join("") + `</tbody></table>`;
+  const byTopic = agg(it => it.topic).map(x => ({...x, label:TOPIC[x.k]}));
+  const byType = agg(it => it.type).map(x => ({...x, label:TYPE[x.k]}));
+  const total = items.reduce((s,it) => s + (it.time||0), 0);
+  let h = `<div class="wrap"><div class="brand"><h1><span>SONUÇ · ${esc((res.finishedAt||"").slice(0,10))}</span>${res.kind === "drill" ? "Konu testi " + (res.drillNo||"") : res.testNo ? "Deneme " + res.testNo : esc(res.testId)}</h1>
+    <div class="row"><button class="btn" data-a="home">Denemelere dön</button><button class="btn" data-a="tab" data-v="hist">Geçmiş</button><button class="btn ghost" data-a="del-res">Sonucu sil</button></div></div>`;
+  if (S.delAsk) h += `<div class="confirm" style="margin-bottom:14px;border-color:var(--bad)"><strong>Bu sonuç silinsin mi?</strong><p class="small muted" style="margin:4px 0 10px">Puan grafiğinden ve zayıf konu analizinden çıkarılır. Geri alınamaz.</p><div class="row"><button class="btn" data-a="del-no">Vazgeç</button><button class="btn pri" data-a="del-yes" style="background:var(--bad);border-color:var(--bad)">Sil</button></div></div>`;
+  if (S.saveWarn) h += `<p class="err">Sonuç bu tarayıcıya kaydedilemedi (tarayıcı depolaması kapalı olabilir). Sayfayı kapatınca bu sonuç kaybolur.</p>`;
+  if (res.kind === "drill") h += `<div class="score"><div><div class="lab">Doğru</div><div class="big tnum">${res.correct}<span style="font-size:28px;color:var(--mute)">/${res.total}</span></div></div>
+    <div><div class="lab">Toplam süre</div><div class="tnum" style="font-size:22px;font-weight:700">${fmtT(total)}</div></div>
+    <div><div class="lab">Formül kartı açılan soru</div><div class="tnum" style="font-size:22px;font-weight:700">${res.cheatCount||0}</div></div>
+    <p class="note" style="flex-basis:100%;margin:0">Konu testleri 130–170 tahminine ve puan grafiğine katılmaz; zayıf konu analizine katılır.</p></div>`;
+  else h += `<div class="score"><div><div class="lab">Tahmini puan</div><div class="big tnum">${res.score}</div></div>
+    <div><div class="lab">Bölüm 1</div><div class="tnum" style="font-size:22px;font-weight:700">${res.s1Correct}/12</div></div>
+    <div><div class="lab">Bölüm 2 · ${VAR[res.variant]}</div><div class="tnum" style="font-size:22px;font-weight:700">${res.s2Correct}/15</div></div>
+    <div><div class="lab">Toplam süre</div><div class="tnum" style="font-size:22px;font-weight:700">${fmtT(total)}</div></div>
+    <p class="note" style="flex-basis:100%;margin:0">Bu puan bir tahmindir: doğru sayını ve Bölüm 2'nin zorluğunu kaba bir ağırlıkla 130–170 ölçeğine çevirir. ETS'nin gerçek puanlama tablosu yayımlanmıyor.</p></div>`;
+  h += `<div class="two" style="margin-top:14px"><div class="card"><div class="num">KONU BAZINDA</div>${tbl(byTopic, "Konu")}</div><div class="card"><div class="num">SORU TİPİ BAZINDA</div>${tbl(byType, "Tip")}</div></div>`;
+  h += `<div class="section-title">Sorular ve çözümler</div>`;
+  if (!secs) h += `<p class="muted small">${_resSecs.failed ? "Çözümler yüklenemedi." : "Çözümler yükleniyor…"}</p>`;
+  let lastSec = null;
+  items.forEach(it => {
+    if (it.section !== lastSec){ lastSec = it.section; h += `<p class="num" style="margin:16px 0 8px">${it.section === "main" ? "KONU TESTİ" : it.section === "s1" ? "BÖLÜM 1" : "BÖLÜM 2 · " + VAR[it.section].toUpperCase()}</p>`; }
+    const q = qById[it.qid];
+    const pill = !it.answered ? `<span class="pill skip">Boş</span>` : it.correct ? `<span class="pill ok">Doğru</span>` : `<span class="pill bad">Yanlış</span>`;
+    h += `<details class="qrow"><summary><span class="tnum" style="font-weight:700;width:26px">${it.n}</span>${pill}<span class="small">${TOPIC[it.topic]} · ${esc(it.sub)}</span>${it.cheat ? `<span class="chip">Formüle bakıldı</span>` : ""}<span class="sp"></span><span class="chip">${TYPE[it.type]}</span><span class="tnum small muted">${fmtT(it.time)}</span></summary>`;
+    if (q){
+      const sec = it.section === "s1" || it.section === "main" ? secs.s1 : secs.s2;
+      const stim = q.set && sec.sets && sec.sets[q.set] ? `<div class="stim" style="margin-bottom:12px">${sec.sets[q.set].html}</div>` : "";
+      const qb = q.type === "qc" ? `${q.fig ? `<div class="fig">${q.fig}</div>` : ""}${q.given ? `<div class="qtext given">${q.given}</div>` : ""}<div class="qcgrid qtext"><div class="h">Quantity A</div><div class="h">Quantity B</div><div>${q.qa}</div><div>${q.qb}</div></div>`
+        : `<div class="qtext">${q.stem}</div>${q.fig ? `<div class="fig">${q.fig}</div>` : ""}${q.choices ? `<ol type="A" style="font-family:var(--serif)">${q.choices.map(c => `<li>${c}</li>`).join("")}</ol>` : ""}`;
+      h += `<div class="det">${stim}${qb}<p class="small"><strong>Senin cevabın:</strong> ${answerText(q, it.answer)} &nbsp;·&nbsp; <strong>Doğru cevap:</strong> ${correctText(q)}</p>
+        <div class="sol"><b>Adım adım çözüm</b>${q.expl}</div>${q.short ? `<div class="sol"><b>Kısayol</b>${q.short}</div>` : ""}</div>`;
+    }
+    h += `</details>`;
+  });
+  return h + `</div>`;
+}
+
+/* ---------------- events ---------------- */
+document.addEventListener("click", async e => {
+  const ck = e.target.closest("[data-ck]"); if (ck){ cKey(ck.dataset.ck); return; }
+  const el = e.target.closest("[data-a]"); if (!el) return;
+  const a = el.dataset.a, v = el.dataset.v, r = S.run;
+  if (a === "fs"){ try{ if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); }catch(err){ S.fsFail = true; } render(); return; }
+  if (a === "tab"){ S.tab = v; S.view = null; render(); return; }
+  if (a === "home"){ S.view = null; S.tab = "home"; S.saveWarn = false; render(); return; }
+  if (a === "start"){ ls.del(LS_RUN); S.resumable = null; C.toks = []; C.cur = ""; C.mem = 0; C.open = false; startTest(v); return; }
+  if (a === "resume"){ const sv = S.resumable; S.resumable = null; C.open = false;
+    if (sv.phase === "break"){ S.run = { ...sv, marks:new Set(sv.marks||[]) }; S.view = "exam"; render(); } else startTest(sv.testId, sv); return; }
+  if (a === "discard"){ ls.del(LS_RUN); S.resumable = null; render(); return; }
+  if (a === "show-res"){ S.view = "result"; S.resultId = v; S.saveWarn = false; S.delAsk = false; render(); window.scrollTo(0,0); return; }
+  if (a === "del-res"){ S.delAsk = true; render(); return; }
+  if (a === "del-no"){ S.delAsk = false; render(); return; }
+  if (a === "del-yes"){ const id = S.resultId; S.delAsk = false;
+    try{ if (S.db) await S.db.doc("results/" + id).delete(); }catch(e){ S.err = "Sonuç silinemedi (" + (e.code||"hata") + ")."; }
+    const b = ls.get(LS_RES) || []; ls.set(LS_RES, b.filter(x => x.id !== id));
+    S.results = S.results.filter(x => x.id !== id); S.view = null; S.tab = "hist"; render(); return; }
+  if (a === "quit"){ S.quitAsk = true; render(); window.scrollTo(0,0); return; }
+  if (a === "quit-no"){ S.quitAsk = false; render(); return; }
+  if (a === "quit-yes"){ discardRun(""); return; }
+  if (a === "s1wrong"){ S.showS1Wrong = !S.showS1Wrong; render(); return; }
+  if (a === "begin-s2"){ S.showS1Wrong = false; beginS2(); return; }
+  if (!r) return;
+  const q = r.sec && r.sec.questions[r.idx];
+  if (a === "pick"){ setAns(q.id, Number(v)); el.parentElement.querySelectorAll(".opt").forEach(b => b.setAttribute("aria-checked", String(b === el))); return; }
+  if (a === "multi"){ const cur = Array.isArray(r.answers[q.id]) ? [...r.answers[q.id]] : []; const i = Number(v); const k = cur.indexOf(i); k >= 0 ? cur.splice(k,1) : cur.push(i); setAns(q.id, cur); el.setAttribute("aria-checked", String(k < 0)); return; }
+  if (a === "mark"){ r.marks.has(q.id) ? r.marks.delete(q.id) : r.marks.add(q.id); el.classList.toggle("on"); saveRun(); return; }
+  if (a === "review"){ commitTime(); r.view = r.view === "review" ? "q" : "review"; r.confirmExit = false; r.qStart = Date.now(); saveRun(); render(); return; }
+  if (a === "goto"){ go(Number(v)); return; }
+  if (a === "prev"){ if (r.idx > 0) go(r.idx - 1); return; }
+  if (a === "next"){
+    if (r.view === "review"){ r.confirmExit = true; render(); return; }
+    if (r.idx < r.sec.questions.length - 1) go(r.idx + 1);
+    else { commitTime(); r.view = "review"; r.confirmExit = false; saveRun(); render(); }
+    return;
+  }
+  if (a === "exit-no"){ r.confirmExit = false; render(); return; }
+  if (a === "exit-yes"){ r.confirmExit = false; finishSection(false); return; }
+  if (a === "calc"){ C.open = !C.open; render(); return; }
+  if (a === "calc-close"){ C.open = false; render(); return; }
+  if (a === "cheat"){ S.cheatOpen = !S.cheatOpen; if (S.cheatOpen && r.view === "q" && q){ r.cheat = r.cheat || []; if (!r.cheat.includes(q.id)) r.cheat.push(q.id); saveRun(); } const y = window.scrollY; render(); window.scrollTo(0, y); return; }
+  if (a === "transfer"){ transfer(); return; }
+  if (a === "hide-time"){ r.hideTime = !r.hideTime; saveRun(); render(); return; }
+});
+document.addEventListener("input", e => {
+  const r = S.run; if (!r || !r.sec) return; const q = r.sec.questions[r.idx];
+  if (e.target.id === "ne-in") setAns(q.id, e.target.value.replace(/[^0-9.,\-\/]/g, "").slice(0, 12));
+  if (e.target.id === "nef-n" || e.target.id === "nef-d"){ const n = $("#nef-n").value.replace(/[^0-9\-]/g,"").slice(0,8), d = $("#nef-d").value.replace(/[^0-9\-]/g,"").slice(0,8); setAns(q.id, {n, d}); }
+});
+document.addEventListener("keydown", e => {
+  if (!C.open || S.view !== "exam" || e.target.tagName === "INPUT") return;
+  const map = {"+":"+","-":"−","*":"×","/":"÷","Enter":"=","=":"=","Escape":"C","Backspace":"CE","(":"(",")":")",".":".",",":"."};
+  const k = /^[0-9]$/.test(e.key) ? e.key : map[e.key];
+  if (k){ e.preventDefault(); cKey(k); }
+});
+document.addEventListener("fullscreenchange", () => render());
+document.addEventListener("visibilitychange", () => { if (S.run && S.view === "exam"){ if (document.hidden) { commitTime(); saveRun(); } else S.run.qStart = Date.now(); } });
+
+boot();
+})();
+</script>
+
+</body></html>
