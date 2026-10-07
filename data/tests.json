@@ -1,0 +1,256 @@
+[
+ {
+  "counts": {
+   "main": 20
+  },
+  "createdAt": "2026-09-28",
+  "drillNo": 1,
+  "id": "k001",
+  "kind": "drill",
+  "note": "20 soruluk istatistik tekrarı, tek bölüm, 35 dakika. Her soruda sağ üstteki 'Formüller' ile Türkçe formül kartını açabilirsin.",
+  "sections": [
+   "main"
+  ],
+  "targets": [
+   "Ortalama / medyan / mod",
+   "Çeyrekler ve kutu grafiği",
+   "Standart sapma",
+   "Normal dağılım"
+  ],
+  "time": 2100,
+  "title": "Konu Testi · Ortalama, Medyan ve Dağılım"
+ },
+ {
+  "counts": {
+   "main": 22
+  },
+  "createdAt": "2026-10-03",
+  "drillNo": 2,
+  "id": "k002",
+  "kind": "drill",
+  "note": "22 yeni soru, her biri Deneme 1–10'daki bir yanlışından türetildi; çözümde hangi hatadan geldiği yazıyor. Şekil yok, geometriyi kâğıda kendin çiz. Tek bölüm, 38 dakika.",
+  "sections": [
+   "main"
+  ],
+  "targets": [
+   "Deneme 1–10 yanlışların",
+   "Koşul okuma tuzakları",
+   "Şekilsiz geometri"
+  ],
+  "time": 2280,
+  "title": "Hell Mode · Yanlışlarından"
+ },
+ {
+  "counts": {
+   "main": 14
+  },
+  "createdAt": "2026-10-03",
+  "drillNo": 3,
+  "id": "k003",
+  "kind": "drill",
+  "note": "14 yeni soru, 24 dakika: 27 soruluk denemenin yarı süresi (soru başına ~1:45). Şekil yok.",
+  "sections": [
+   "main"
+  ],
+  "targets": [
+   "Hell Mode 1'de boş/yanlış kalanlar",
+   "Koşul okuma tuzakları",
+   "Şekilsiz geometri"
+  ],
+  "time": 1440,
+  "title": "Hell Mode 2 · Hızlı tur"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-26",
+  "id": "t001",
+  "no": 1,
+  "note": "İlk deneme: geçmiş sonuç olmadığı için tüm konular dengeli dağıtıldı (tanılama).",
+  "targets": [],
+  "title": "Deneme 1 · Tanılama"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-26",
+  "id": "t002",
+  "no": 2,
+  "note": "Henüz sonuç yok; isteğin üzerine tüm bölümler bir kademe zorlaştırıldı. Kolay varyant orta, orta varyant zor seviyede; zor varyant 165+ için.",
+  "targets": [
+   "165+ hedef",
+   "Tuzaklı QC",
+   "Çok adımlı olasılık",
+   "Veri yorumlama"
+  ],
+  "title": "Deneme 2 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t003",
+  "no": 3,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 3 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t004",
+  "no": 4,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 4 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t005",
+  "no": 5,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 5 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t006",
+  "no": 6,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 6 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t007",
+  "no": 7,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 7 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t008",
+  "no": 8,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 8 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t009",
+  "no": 9,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 9 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t010",
+  "no": 10,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 10 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t011",
+  "no": 11,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 11 · 165+ Zorluk"
+ },
+ {
+  "counts": {
+   "easy": 15,
+   "hard": 15,
+   "medium": 15,
+   "s1": 12
+  },
+  "createdAt": "2026-09-28",
+  "id": "t012",
+  "no": 12,
+  "note": "Gerçek sınava yakın konu dağılımı: aritmetik, cebir, geometri ve veri analizi dengeli; zor varyant 165+ hedefli.",
+  "targets": [
+   "Dengeli dağılım (gerçek sınava yakın)"
+  ],
+  "title": "Deneme 12 · 165+ Zorluk"
+ }
+]
